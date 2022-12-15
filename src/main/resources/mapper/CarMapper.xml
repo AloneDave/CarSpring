@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="net.hnkj.carspring.mapper.CarMapper" >
+  <resultMap id="BaseResultMap" type="net.hnkj.carspring.model.Car" >
+    <constructor >
+      <arg column="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="carname" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="price" jdbcType="REAL" javaType="java.lang.Float" />
+      <arg column="licence_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="city" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="brand" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="fastens" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="gear" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="size" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="Color" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="Gearbox" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="Displacement" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="Transfer" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="Mileage" jdbcType="DOUBLE" javaType="java.lang.Double" />
+      <arg column="address" jdbcType="LONGVARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, carname, price,
+      licence_time, city, brand,
+      fastens, gear, size,
+      Color, Gearbox, Displacement,
+      Transfer, Mileage, address
+  </sql>
+  <insert id="insert" parameterType="net.hnkj.carspring.model.Car" >
+    insert into t_car (id, carname, price, 
+      licence_time, city, brand, 
+      fastens, gear, size, 
+      Color, Gearbox, Displacement, 
+      Transfer, Mileage, address
+      )
+    values (#{id,jdbcType=INTEGER}, #{carname,jdbcType=VARCHAR}, #{price,jdbcType=REAL}, 
+      #{licenceTime,jdbcType=TIMESTAMP}, #{city,jdbcType=VARCHAR}, #{brand,jdbcType=VARCHAR}, 
+      #{fastens,jdbcType=VARCHAR}, #{gear,jdbcType=VARCHAR}, #{size,jdbcType=VARCHAR}, 
+      #{color,jdbcType=VARCHAR}, #{gearbox,jdbcType=VARCHAR}, #{displacement,jdbcType=VARCHAR}, 
+      #{transfer,jdbcType=INTEGER}, #{mileage,jdbcType=DOUBLE}, #{address,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="net.hnkj.carspring.model.Car" >
+    insert into t_car
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="carname != null" >
+        carname,
+      </if>
+      <if test="price != null" >
+        price,
+      </if>
+      <if test="licenceTime != null" >
+        licence_time,
+      </if>
+      <if test="city != null" >
+        city,
+      </if>
+      <if test="brand != null" >
+        brand,
+      </if>
+      <if test="fastens != null" >
+        fastens,
+      </if>
+      <if test="gear != null" >
+        gear,
+      </if>
+      <if test="size != null" >
+        size,
+      </if>
+      <if test="color != null" >
+        Color,
+      </if>
+      <if test="gearbox != null" >
+        Gearbox,
+      </if>
+      <if test="displacement != null" >
+        Displacement,
+      </if>
+      <if test="transfer != null" >
+        Transfer,
+      </if>
+      <if test="mileage != null" >
+        Mileage,
+      </if>
+      <if test="address != null" >
+        address,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="carname != null" >
+        #{carname,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null" >
+        #{price,jdbcType=REAL},
+      </if>
+      <if test="licenceTime != null" >
+        #{licenceTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="city != null" >
+        #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="brand != null" >
+        #{brand,jdbcType=VARCHAR},
+      </if>
+      <if test="fastens != null" >
+        #{fastens,jdbcType=VARCHAR},
+      </if>
+      <if test="gear != null" >
+        #{gear,jdbcType=VARCHAR},
+      </if>
+      <if test="size != null" >
+        #{size,jdbcType=VARCHAR},
+      </if>
+      <if test="color != null" >
+        #{color,jdbcType=VARCHAR},
+      </if>
+      <if test="gearbox != null" >
+        #{gearbox,jdbcType=VARCHAR},
+      </if>
+      <if test="displacement != null" >
+        #{displacement,jdbcType=VARCHAR},
+      </if>
+      <if test="transfer != null" >
+        #{transfer,jdbcType=INTEGER},
+      </if>
+      <if test="mileage != null" >
+        #{mileage,jdbcType=DOUBLE},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="net.hnkj.carspring.model.Car" >
+    update t_car
+    <set>
+      <if test="carname != null" >
+        #{carname,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null" >
+        #{price,jdbcType=REAL},
+      </if>
+      <if test="licenceTime != null" >
+        #{licenceTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="city != null" >
+        #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="brand != null" >
+        #{brand,jdbcType=VARCHAR},
+      </if>
+      <if test="fastens != null" >
+        #{fastens,jdbcType=VARCHAR},
+      </if>
+      <if test="gear != null" >
+        #{gear,jdbcType=VARCHAR},
+      </if>
+      <if test="size != null" >
+        #{size,jdbcType=VARCHAR},
+      </if>
+      <if test="color != null" >
+        #{color,jdbcType=VARCHAR},
+      </if>
+      <if test="gearbox != null" >
+        #{gearbox,jdbcType=VARCHAR},
+      </if>
+      <if test="displacement != null" >
+        #{displacement,jdbcType=VARCHAR},
+      </if>
+      <if test="transfer != null" >
+        #{transfer,jdbcType=INTEGER},
+      </if>
+      <if test="mileage != null" >
+        #{mileage,jdbcType=DOUBLE},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey">
+    update t_car
+    set carname = #{carname,jdbcType=VARCHAR},
+        price = #{price,jdbcType=REAL},
+        licenceTime = #{licenceTime,jdbcType=TIMESTAMP},
+        city = #{city,jdbcType=VARCHAR},
+        brand = #{brand,jdbcType=VARCHAR},
+        fastens = #{fastens,jdbcType=VARCHAR},
+        gear = #{gear,jdbcType=VARCHAR},
+        size = #{size,jdbcType=VARCHAR},
+        color = #{color,jdbcType=VARCHAR},
+        gearbox = #{gearbox,jdbcType=VARCHAR},
+        displacement = #{displacement,jdbcType=VARCHAR},
+        transfer = #{transfer,jdbcType=INTEGER},
+        mileage = #{mileage,jdbcType=DOUBLE},
+        address = #{address,jdbcType=LONGVARCHAR},
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+      delete from t_car
+      where id = #{id}
+    </delete>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select
+    <include refid="Base_Column_List" />
+    from t_car
+    where id = #{id}
+  </select>
+  <select id="listBook" resultMap="BaseResultMap" parameterType="net.hnkj.carspring.model.Car">
+    select
+    <include refid="Base_Column_List" />
+    from t_car
+    where 1=1
+    <if test="null!=carname">
+        and carname like concat('%',#{carname},'%')
+    </if>
+  </select>
+</mapper>

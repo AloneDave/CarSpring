@@ -71,7 +71,7 @@
             <!--&lt;!&ndash; <columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR" /> &ndash;&gt;-->
         <!--</table>-->
 
-        <table schema="" tableName="t_tree_node" domainObjectName="TreeNode"
+        <table schema="" tableName="t_car" domainObjectName="Car"
                enableCountByExample="false" enableDeleteByExample="false"
                enableSelectByExample="false" enableUpdateByExample="false">
             <!-- 忽略列，不生成bean 字段 -->
@@ -79,6 +79,7 @@
             <!-- 指定列的java数据类型 -->
             <!-- <columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR" /> -->
         </table>
+
 
     </context>
 </generatorConfiguration>
