@@ -51,9 +51,9 @@ class ICarServiceImplTest {
     }
 
     @Test
-    void listBook() {
+    void listCar() {
         car.setCarname("路虎");
-        List<Car> cars = carService.listBook(car,pageBean);
+        List<Car> cars = carService.listCar(car,pageBean);
         for (Car car1 : cars) {
             System.out.println(car1);
         }

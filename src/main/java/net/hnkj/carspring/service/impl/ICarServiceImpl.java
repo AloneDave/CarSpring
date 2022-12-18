@@ -46,7 +46,7 @@ public class ICarServiceImpl implements ICarService {
     }
 
     @Override
-    public List<Car> listBook(Car car, PageBean pageBean) {
-        return carMapper.listBook(car);
+    public List<Car> listCar(Car car, PageBean pageBean) {
+        return carMapper.listCar(car);
     }
 }

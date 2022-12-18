@@ -16,14 +16,16 @@ class GetDemo {
         SaveToExcel<Page> pageSaveToExcel = new SaveToExcel<>();
         List<Page> list = new ArrayList<>();
 //         =====================================================================================
-        System.getProperties().setProperty("webdriver.chrome.driver", "C:\\Program Files\\Google\\Chrome Dev\\Application\\chrome.exe");
-
+        //设置驱动
+        System.getProperties().setProperty("webdriver.chrome.driver", "C:\\Program Files\\Google\\Chrome Dev\\Application\\chromedriver.exe");
+        //实例化驱动对象
         ChromeDriver chromeDriver = new ChromeDriver();
 
         for (int page_m = 1; page_m <= 100; page_m++) {   //page_m控制页数
             if (page_m==1) {
-                String url = "https://www.che168.com/china/a0_0ms50dgscncgpi1ltocspexx0/";
+                String url = "https://www.che168.com/beijing/a0_0ms50dgscncgpi1ltocspexx0/";
                 chromeDriver.get(url);
+
 
                 try {
                     Thread.sleep(3000);

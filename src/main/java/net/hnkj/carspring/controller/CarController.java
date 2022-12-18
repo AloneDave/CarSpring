@@ -9,6 +9,9 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -28,9 +31,7 @@ public class CarController {
     @RequestMapping("/list")
     public JsonData list(Car car, PageBean pageBean){
         JsonData jsonData = new JsonData();
-
-        List<Car> cars = carService.listBook(car,pageBean);
-
+        List<Car> cars = carService.listCar(car,pageBean);
         jsonData.setCode(0);
         jsonData.setMessage("查询成功");
         jsonData.setRows(cars);
@@ -51,14 +52,14 @@ public class CarController {
                 jsonData.setCode(0);
                 jsonData.setMessage("汽车新增失败");
             }
-        }else {//前端传过来的参数中包含id 就是书本新增
+        }else {//前端传过来的参数中包含id 就是汽车修改
             int i = carService.updateByPrimaryKeySelective(car);
             if(i==1){
                 jsonData.setCode(1);
-                jsonData.setMessage("书本修改成功");
+                jsonData.setMessage("汽车修改成功");
             }else {
                 jsonData.setCode(0);
-                jsonData.setMessage("书本修改失败");
+                jsonData.setMessage("汽车修改失败");
             }
         }
 

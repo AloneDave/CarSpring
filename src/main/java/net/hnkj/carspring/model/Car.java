@@ -13,7 +13,7 @@ public class Car implements Serializable {
 
     private Float price;
 
-    private Date licenceTime;
+    private String licenceTime;
 
     private String city;
 
@@ -37,7 +37,7 @@ public class Car implements Serializable {
 
     private String address;
 
-    public Car(Integer id, String carname, Float price, Date licenceTime, String city, String brand, String fastens, String gear, String size, String color, String gearbox, String displacement, Integer transfer, Double mileage, String address) {
+    public Car(Integer id, String carname, Float price, String licenceTime, String city, String brand, String fastens, String gear, String size, String color, String gearbox, String displacement, Integer transfer, Double mileage, String address) {
         this.id = id;
         this.carname = carname;
         this.price = price;
@@ -83,11 +83,11 @@ public class Car implements Serializable {
         this.price = price;
     }
 
-    public Date getLicenceTime() {
+    public String getLicenceTime() {
         return licenceTime;
     }
 
-    public void setLicenceTime(Date licenceTime) {
+    public void setLicenceTime(String licenceTime) {
         this.licenceTime = licenceTime;
     }
 

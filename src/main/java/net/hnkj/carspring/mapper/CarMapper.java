@@ -21,5 +21,5 @@ public interface CarMapper {
     int updateByPrimaryKey(Car record);
 
     //查询全部汽车信息
-    List<Car> listBook(Car car);
+    List<Car> listCar(Car car);
 }

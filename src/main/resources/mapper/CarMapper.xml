@@ -6,7 +6,7 @@
       <arg column="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
       <arg column="carname" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="price" jdbcType="REAL" javaType="java.lang.Float" />
-      <arg column="licence_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="licence_time" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="city" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="brand" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="fastens" jdbcType="VARCHAR" javaType="java.lang.String" />
@@ -35,7 +35,7 @@
       Transfer, Mileage, address
       )
     values (#{id,jdbcType=INTEGER}, #{carname,jdbcType=VARCHAR}, #{price,jdbcType=REAL}, 
-      #{licenceTime,jdbcType=TIMESTAMP}, #{city,jdbcType=VARCHAR}, #{brand,jdbcType=VARCHAR}, 
+      #{licenceTime,jdbcType=VARCHAR}, #{city,jdbcType=VARCHAR}, #{brand,jdbcType=VARCHAR},
       #{fastens,jdbcType=VARCHAR}, #{gear,jdbcType=VARCHAR}, #{size,jdbcType=VARCHAR}, 
       #{color,jdbcType=VARCHAR}, #{gearbox,jdbcType=VARCHAR}, #{displacement,jdbcType=VARCHAR}, 
       #{transfer,jdbcType=INTEGER}, #{mileage,jdbcType=DOUBLE}, #{address,jdbcType=LONGVARCHAR}
@@ -101,7 +101,7 @@
         #{price,jdbcType=REAL},
       </if>
       <if test="licenceTime != null" >
-        #{licenceTime,jdbcType=TIMESTAMP},
+        #{licenceTime},
       </if>
       <if test="city != null" >
         #{city,jdbcType=VARCHAR},
@@ -140,49 +140,47 @@
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="net.hnkj.carspring.model.Car" >
     update t_car
-    <set>
+    <set >
       <if test="carname != null" >
-        #{carname,jdbcType=VARCHAR},
+       carname = #{carname,jdbcType=VARCHAR},
       </if>
       <if test="price != null" >
-        #{price,jdbcType=REAL},
+        price = #{price,jdbcType=REAL},
       </if>
       <if test="licenceTime != null" >
-        #{licenceTime,jdbcType=TIMESTAMP},
+        licence_time = #{licenceTime},
       </if>
       <if test="city != null" >
-        #{city,jdbcType=VARCHAR},
+        city = #{city,jdbcType=VARCHAR},
       </if>
       <if test="brand != null" >
-        #{brand,jdbcType=VARCHAR},
+        brand = #{brand,jdbcType=VARCHAR},
       </if>
       <if test="fastens != null" >
-        #{fastens,jdbcType=VARCHAR},
+        fastens = #{fastens,jdbcType=VARCHAR},
       </if>
       <if test="gear != null" >
-        #{gear,jdbcType=VARCHAR},
+        gear = #{gear,jdbcType=VARCHAR},
       </if>
       <if test="size != null" >
-        #{size,jdbcType=VARCHAR},
+        size = #{size,jdbcType=VARCHAR},
       </if>
       <if test="color != null" >
-        #{color,jdbcType=VARCHAR},
+        color = #{color,jdbcType=VARCHAR},
       </if>
       <if test="gearbox != null" >
-        #{gearbox,jdbcType=VARCHAR},
+        gearbox = #{gearbox,jdbcType=VARCHAR},
       </if>
       <if test="displacement != null" >
-        #{displacement,jdbcType=VARCHAR},
+        displacement = #{displacement,jdbcType=VARCHAR},
       </if>
       <if test="transfer != null" >
-        #{transfer,jdbcType=INTEGER},
+       transfer = #{transfer,jdbcType=INTEGER},
       </if>
       <if test="mileage != null" >
-        #{mileage,jdbcType=DOUBLE},
+        mileage = #{mileage,jdbcType=DOUBLE},
       </if>
-      <if test="address != null" >
-        #{address,jdbcType=LONGVARCHAR},
-      </if>
+        address = #{address,jdbcType=LONGVARCHAR},
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
@@ -190,7 +188,7 @@
     update t_car
     set carname = #{carname,jdbcType=VARCHAR},
         price = #{price,jdbcType=REAL},
-        licenceTime = #{licenceTime,jdbcType=TIMESTAMP},
+        licenceTime = #{licenceTime},
         city = #{city,jdbcType=VARCHAR},
         brand = #{brand,jdbcType=VARCHAR},
         fastens = #{fastens,jdbcType=VARCHAR},
@@ -214,7 +212,7 @@
     from t_car
     where id = #{id}
   </select>
-  <select id="listBook" resultMap="BaseResultMap" parameterType="net.hnkj.carspring.model.Car">
+  <select id="listCar" resultMap="BaseResultMap" parameterType="net.hnkj.carspring.model.Car">
     select
     <include refid="Base_Column_List" />
     from t_car

@@ -25,5 +25,5 @@ public interface ICarService {
 
     //查询全部汽车信息
     @Transactional(readOnly = true)
-    List<Car> listBook(Car car, PageBean pageBean);
+    List<Car> listCar(Car car, PageBean pageBean);
 }
